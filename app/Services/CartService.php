@@ -10,7 +10,7 @@ class CartService
     {
         $cart = $this->get();
 
-        if (!isset($cart[$productId])) {
+        if (! isset($cart[$productId])) {
             $cart[$productId] = 1;
             session()->put(self::SESSION_KEY, $cart);
         }

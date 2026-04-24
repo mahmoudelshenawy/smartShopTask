@@ -3,7 +3,6 @@
 namespace App\Livewire\Products;
 
 use App\Models\Product;
-use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -16,7 +15,9 @@ class Products extends Component
     use WithPagination;
 
     protected $paginationTheme = 'tailwind';
+
     public string $search = '';
+
     public function updatingSearch(): void
     {
         $this->resetPage();
@@ -26,8 +27,8 @@ class Products extends Component
     {
         return view('livewire.products.products', [
             'products' => Product::query()->when($this->search, function ($query) {
-                $query->where('name', 'like', '%' . $this->search . '%')
-                    ->orWhere('description', 'like', '%' . $this->search . '%');
+                $query->where('name', 'like', '%'.$this->search.'%')
+                    ->orWhere('description', 'like', '%'.$this->search.'%');
             })->paginate(12),
         ]);
     }

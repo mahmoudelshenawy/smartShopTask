@@ -4,6 +4,7 @@ namespace App\Livewire\Cart;
 
 use App\Models\Product;
 use App\Services\CartService;
+use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -12,10 +13,13 @@ class Cart extends Component
 {
     public bool $showCheckout = false;
 
-    public string $cardName   = 'John Doe';
+    public string $cardName = 'John Doe';
+
     public string $cardNumber = '4203 3027 0804 7524';
-    public string $expiry     = '02/28';
-    public string $cvv        = '123';
+
+    public string $expiry = '02/28';
+
+    public string $cvv = '123';
 
     public bool $paid = false;
 
@@ -64,20 +68,20 @@ class Cart extends Component
         // ]);
 
         $cart->clear();
-        $this->paid         = true;
+        $this->paid = true;
         $this->showCheckout = false;
         $this->resetForm();
     }
 
     private function resetForm(): void
     {
-        $this->cardName   = '';
+        $this->cardName = '';
         $this->cardNumber = '';
-        $this->expiry     = '';
-        $this->cvv        = '';
+        $this->expiry = '';
+        $this->cvv = '';
     }
 
-    private function getCartItems(CartService $cart): \Illuminate\Support\Collection
+    private function getCartItems(CartService $cart): Collection
     {
         $cartData = $cart->get(); // [productId => quantity]
 
@@ -89,8 +93,9 @@ class Cart extends Component
 
         return collect($cartData)->map(function ($quantity, $productId) use ($products) {
             $product = $products->get($productId);
-            return $product ? (object)[
-                'product'  => $product,
+
+            return $product ? (object) [
+                'product' => $product,
                 'quantity' => $quantity,
                 'subtotal' => $product->price * $quantity,
             ] : null;
@@ -99,9 +104,10 @@ class Cart extends Component
 
     public function render(CartService $cart)
     {
-        $items    = $this->getCartItems($cart);
+        $items = $this->getCartItems($cart);
         // dd($items);
-        $total    = $items->sum('subtotal');
+        $total = $items->sum('subtotal');
+
         return view('livewire.cart.cart', compact('items', 'total'));
     }
 }

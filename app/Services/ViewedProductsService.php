@@ -5,13 +5,14 @@ namespace App\Services;
 class ViewedProductsService
 {
     private const SESSION_KEY = 'viewed_products';
-    private const MAX_ITEMS   = 3;
+
+    private const MAX_ITEMS = 3;
 
     public function track(int $productId): void
     {
         $viewed = $this->get();
 
-        $viewed = array_filter($viewed, fn($id) => $id !== $productId);
+        $viewed = array_filter($viewed, fn ($id) => $id !== $productId);
         $viewed = array_values($viewed);
         array_unshift($viewed, $productId);
 
@@ -29,7 +30,7 @@ class ViewedProductsService
     {
         return array_filter(
             $this->get(),
-            fn($id) => $id !== $productId
+            fn ($id) => $id !== $productId
         );
     }
 }

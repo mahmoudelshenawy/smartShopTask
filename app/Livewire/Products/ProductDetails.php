@@ -5,6 +5,7 @@ namespace App\Livewire\Products;
 use App\Models\Product;
 use App\Services\CartService;
 use App\Services\ViewedProductsService;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,12 +15,13 @@ use Livewire\Component;
 class ProductDetails extends Component
 {
     public Product $product;
+
     public bool $inCart = false;
 
     public function mount(Product $product, ViewedProductsService $viewedProducts, CartService $cart): void
     {
         $this->product = $product;
-        $this->inCart  = $cart->inCart($product->id);
+        $this->inCart = $cart->inCart($product->id);
         $viewedProducts->track($product->id);
     }
 
@@ -33,10 +35,10 @@ class ProductDetails extends Component
             $cart->add($this->product->id);
         }
 
-        $this->inCart = !$this->inCart;
+        $this->inCart = ! $this->inCart;
     }
 
-    private function getRecommended(): \Illuminate\Database\Eloquent\Collection
+    private function getRecommended(): Collection
     {
         return Product::where('id', '!=', $this->product->id)
             ->inRandomOrder()

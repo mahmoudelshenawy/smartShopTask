@@ -11,7 +11,9 @@ use Livewire\Component;
 class TodoList extends Component
 {
     public string $name = '';
+
     public ?int $editingId = null;
+
     public string $editingName = '';
 
     public array $items = [
@@ -25,7 +27,7 @@ class TodoList extends Component
         $this->validate(['name' => 'required|min:2']);
 
         $this->items[] = [
-            'id'   => time(),
+            'id' => time(),
             'name' => trim($this->name),
         ];
 
@@ -47,6 +49,7 @@ class TodoList extends Component
             if ($item['id'] === $this->editingId) {
                 $item['name'] = trim($this->editingName);
             }
+
             return $item;
         })->toArray();
 
@@ -56,7 +59,7 @@ class TodoList extends Component
     public function delete(int $id): void
     {
         $this->items = collect($this->items)
-            ->reject(fn($item) => $item['id'] === $id)
+            ->reject(fn ($item) => $item['id'] === $id)
             ->values()
             ->toArray();
     }

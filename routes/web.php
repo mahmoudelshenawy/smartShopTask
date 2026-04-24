@@ -3,8 +3,6 @@
 use App\Livewire\Cart\Cart;
 use App\Livewire\Products\ProductDetails;
 use App\Livewire\Products\Products;
-use App\Livewire\Products\TodoList;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -22,4 +20,4 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('cart', Cart::class)->name('cart.index');
 });
-require __DIR__ . '/settings.php';
+require __DIR__.'/settings.php';
