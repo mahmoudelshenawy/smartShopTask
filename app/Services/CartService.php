@@ -46,7 +46,6 @@ class CartService
         session()->forget(self::SESSION_KEY);
     }
 
-    // Returns ['productId' => quantity, ...]
     public function get(): array
     {
         return session()->get(self::SESSION_KEY, []);

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Cartify</title>
+    <title>SmartShop</title>
     @include('partials.head')
 </head>
 

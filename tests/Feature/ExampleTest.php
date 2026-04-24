@@ -1,7 +1,13 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+uses(RefreshDatabase::class);
 test('returns a successful response', function () {
-    $response = $this->get(route('home'));
+    $user = User::factory()->create();
+
+    $response = $this->actingAs($user)->get(route('home'));
 
     $response->assertOk();
 });
