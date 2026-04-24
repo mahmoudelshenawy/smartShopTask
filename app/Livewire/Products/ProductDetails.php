@@ -25,10 +25,10 @@ class ProductDetails extends Component
         $viewedProducts->track($product->id);
     }
 
-    public function toggleCart(CartService $cart): void
+    public function toggleCart(CartService $cart)
     {
         if (! auth('web')->check()) {
-            $this->redirect(route('login'), navigate: true);
+            return $this->redirect(route('login'), navigate: true);
         }
         if ($this->inCart) {
             session()->flash('cart_message', 'Removed From Cart!');
