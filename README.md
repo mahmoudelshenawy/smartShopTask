@@ -19,8 +19,8 @@ A simple product catalog and cart application built with Laravel, Livewire, Alpi
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/simple-e-commerce.git
-cd simple-e-commerce
+git clone https://github.com/mahmoudelshenawy/smartShopTask.git
+cd smartShopTask
 ```
 
 ### 2. Install PHP dependencies
@@ -107,30 +107,6 @@ php artisan serve
 ```
 
 Visit [http://localhost:8000/products](http://localhost:8000/products)
-
----
-
-## 📁 Key Project Structure
-
-```
-app/
-├── Livewire/
-│   ├── ProductList.php           # Product listing with search + pagination
-│   ├── ProductShow.php           # Product detail page + cart toggle
-│   └── Products/
-│       └── ProductRecommendations.php  # Lazy-loaded AI recommendations
-├── Services/
-│   ├── CartService.php           # Session-based cart (add, remove, quantity)
-│   └── ViewedProductsService.php # Tracks last 3 viewed products in session
-resources/
-└── views/
-    └── livewire/
-        ├── product-list.blade.php
-        ├── product-show.blade.php
-        ├── product-recommendations.blade.php
-        └── cart/
-            └── cart-page.blade.php
-```
 
 ---
 
