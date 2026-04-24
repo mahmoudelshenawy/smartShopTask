@@ -6,8 +6,8 @@ A simple product catalog and cart application built with Laravel, Livewire, Alpi
 
 ## 🧰 Tech Stack
 
-- **Laravel 11** — Backend framework
-- **Livewire 3** — Reactive UI components
+- **Laravel 13** — Backend framework
+- **Livewire 4** — Reactive UI components
 - **Alpine.js** — Lightweight frontend interactivity (bundled with Livewire)
 - **Tailwind CSS** — Utility-first styling
 - **Google Gemini API** — AI-powered product recommendations
