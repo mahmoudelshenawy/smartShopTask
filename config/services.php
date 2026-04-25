@@ -42,4 +42,7 @@ return [
     'gemini' => [
         'key' => env('Gemini_API_Key'),
     ],
+    'openai' => [
+        'key' => env('OPEN_AI_API_KEY'),
+    ],
 ];
