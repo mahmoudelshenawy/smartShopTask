@@ -13,6 +13,7 @@ class CartService
         if (! isset($cart[$productId])) {
             $cart[$productId] = 1;
             session()->put(self::SESSION_KEY, $cart);
+            session()->save();
         }
     }
 
@@ -21,6 +22,7 @@ class CartService
         $cart = $this->get();
         unset($cart[$productId]);
         session()->put(self::SESSION_KEY, $cart);
+        session()->save();
     }
 
     public function incrementQuantity(int $productId): void
@@ -29,6 +31,7 @@ class CartService
         if (isset($cart[$productId])) {
             $cart[$productId]++;
             session()->put(self::SESSION_KEY, $cart);
+            session()->save();
         }
     }
 
@@ -38,6 +41,7 @@ class CartService
         if (isset($cart[$productId]) && $cart[$productId] > 1) {
             $cart[$productId]--;
             session()->put(self::SESSION_KEY, $cart);
+            session()->save();
         }
     }
 

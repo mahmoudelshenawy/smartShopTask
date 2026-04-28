@@ -257,10 +257,10 @@ class ProductSeeder extends Seeder
             ],
         ];
 
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('categories')->truncate();
         DB::table('products')->truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         //
         DB::table('categories')->insert($categories);
         DB::table('products')->insert($products);

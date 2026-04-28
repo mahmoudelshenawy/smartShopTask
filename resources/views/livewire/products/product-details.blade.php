@@ -33,7 +33,7 @@
                 ${{ number_format($product->price, 2) }}
             </div>
 
-            <button wire:click="toggleCart"
+            <button wire:click="toggleCart('{{ \Str::uuid() }}')"
                 class="flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition active:scale-95 w-full sm:w-fit
         {{ $inCart
             ? 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100'

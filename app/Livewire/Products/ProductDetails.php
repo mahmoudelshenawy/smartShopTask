@@ -25,7 +25,7 @@ class ProductDetails extends Component
         $viewedProducts->track($product->id);
     }
 
-    public function toggleCart(CartService $cart)
+    public function toggleCart(CartService $cart, $unique_id)
     {
         if (! auth('web')->check()) {
             return $this->redirect(route('login'), navigate: true);
@@ -38,7 +38,8 @@ class ProductDetails extends Component
             $cart->add($this->product->id);
         }
 
-        $this->inCart = ! $this->inCart;
+        $this->inCart = $cart->inCart($this->product->id);
+
     }
 
     private function getRecommended(): Collection
