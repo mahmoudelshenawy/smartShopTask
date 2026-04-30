@@ -39,21 +39,20 @@ class ProductDetails extends Component
         }
 
         $this->inCart = $cart->inCart($this->product->id);
-
     }
 
-    private function getRecommended(): Collection
-    {
-        return Product::where('id', '!=', $this->product->id)
-            ->inRandomOrder()
-            ->limit(3)
-            ->get();
-    }
+    // private function getRecommended(): Collection
+    // {
+    //     return Product::where('id', '!=', $this->product->id)
+    //         ->inRandomOrder()
+    //         ->limit(3)
+    //         ->get();
+    // }
 
     public function render()
     {
         return view('livewire.products.product-details', [
-            'recommended' => $this->getRecommended(),
+            // 'recommended' => $this->getRecommended(),
         ]);
     }
 }
